@@ -41,9 +41,16 @@ If you want to explore model capabilities check out our
 ## Installation
 Although not required, we highly recommend installing using a package manager and virtualenv such as [uv](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer), it is much faster and better at resolving dependencies than standalone pip.
 
-Install fairchem-core using pip
+Option 1: Install fairchem-core using pip
 ```bash
 pip install fairchem-core
+```
+Option 2: Install in a uv virtual environment
+
+```bash
+uv init metaUMA
+cd metaUMA
+uv add fairchem-core
 ```
 
 ## Quick Start
@@ -57,6 +64,11 @@ Make sure you have a Hugging Face account, have already applied for model access
 You can use the following to save an auth token,
 ```bash
 huggingface-cli login
+```
+In virtual environment, 
+
+```bash
+uv run huggingface-cli login
 ```
 
 ### Set the task for your application and calculate
@@ -149,6 +161,16 @@ triplet.calc = FAIRChemCalculator(predictor, task_name="omol")
 
 triplet.get_potential_energy() - singlet.get_potential_energy()
 ```
+
+#### Offline mode,
+
+To use fairchem-core offline, download the model file (uma-s-1.pt) on a machine with internet access. Transfer it to your offline server (e.g., /YOURPATH/uma.pt). Then, load the model with:
+
+```python
+from fairchem.core import pretrained_mlip
+predictor = pretrained_mlip.load_predict_unit(path="/YOURPATH/uma.pt", device="cuda")
+```
+
 
 ### LICENSE
 `fairchem` is available under a [MIT License](LICENSE.md). Models/checkpoint licenses vary by application area. 
