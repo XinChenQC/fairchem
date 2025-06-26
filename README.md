@@ -65,7 +65,7 @@ You can use the following to save an auth token,
 ```bash
 huggingface-cli login
 ```
-In virtual environment, 
+In uv virtual environment, 
 
 ```bash
 uv run huggingface-cli login
@@ -164,7 +164,7 @@ triplet.get_potential_energy() - singlet.get_potential_energy()
 
 #### Offline mode,
 
-To use fairchem-core offline, download the model file (uma-s-1.pt) on a machine with internet access. Transfer it to your offline server (e.g., /YOURPATH/uma.pt). Then, load the model with:
+To use fairchem-core offline, download the model file (uma-s-1.pt) from Hugging Face on a machine with internet access. Transfer it to your offline server (e.g., /YOURPATH/uma.pt). Then, load the model with:
 
 ```python
 from fairchem.core import pretrained_mlip
